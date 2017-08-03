@@ -4,7 +4,6 @@ addCommandAlias("verify", ";clean;coverage;test")
 
 lazy val `$name$` = (project in file("."))
   .settings(Commons.settings: _*)
-  .settings(sbtavrohugger.SbtAvrohugger.avroSettings : _*)
   .settings(
     name := "$name$",
     parallelExecution in Test := false,
@@ -15,6 +14,7 @@ lazy val `$name$` = (project in file("."))
       .evaluated,
     // exclude Scala library from assembly
     assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false),
+    (stringType in avroConfig) := "String",
     wartremoverWarnings ++= Warts.unsafe,
     mainClass in assembly := Some("$organization$.Startup")
   )
