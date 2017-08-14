@@ -13,7 +13,7 @@ object Commons {
       Opts.resolver.mavenLocalFile,
       "Radicalbit Repo" at "https://public-repo.radicalbit.io/maven/repository/internal/"
     ),
-    libraryDependencies ++= flink.core,
+    libraryDependencies ++= flink.core ++ Operators.libs,
     parallelExecution in Test := false
   )
 }
