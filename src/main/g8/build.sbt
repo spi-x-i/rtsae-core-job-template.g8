@@ -14,6 +14,14 @@ lazy val `$name$` = (project in file("."))
       .evaluated,
     // exclude Scala library from assembly
     assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false),
+    assemblyMergeStrategy in assembly := {
+      {
+        case PathList("org", "apache", "flink", xs @ _ *) => MergeStrategy.last
+        case x =>
+          val oldStrategy = (assemblyMergeStrategy in assembly).value
+          oldStrategy(x)
+      }
+    },
     (stringType in avroConfig) := "String",
     wartremoverWarnings ++= Warts.unsafe,
     mainClass in assembly := Some("$organization$.Startup")
