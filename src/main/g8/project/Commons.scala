@@ -11,7 +11,8 @@ object Commons {
     organization := "$organization$",
     resolvers ++= Seq(
       Opts.resolver.mavenLocalFile,
-      "Radicalbit Repo" at "https://public-repo.radicalbit.io/maven/repository/internal/"
+      "Radicalbit Repo" at "https://public-repo.radicalbit.io/maven/repository/internal/",
+      "Radicalbit Snapshot" at "https://public-repo.radicalbit.io/maven/repository/snapshot/"
     ),
     libraryDependencies ++= flink.core ++ Operators.libs,
     parallelExecution in Test := false
