@@ -17,6 +17,7 @@ lazy val `$name$` = (project in file("."))
     assemblyMergeStrategy in assembly := {
       {
         case PathList("org", "apache", "flink", xs @ _ *) => MergeStrategy.last
+        case PathList("META-INF", xs @ _*) => MergeStrategy.discard
         case x =>
           val oldStrategy = (assemblyMergeStrategy in assembly).value
           oldStrategy(x)
