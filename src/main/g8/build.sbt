@@ -20,6 +20,7 @@ lazy val `$name$` = (project in file("."))
         case PathList("META-INF", "io.netty.versions.properties") => MergeStrategy.filterDistinctLines
         case PathList("META-INF", "MANIFEST.MF") => MergeStrategy.discard
         case PathList("org", "slf4j", xs@_*) => MergeStrategy.first
+        case PathList("META-INF", "services", xs@_*) => MergeStrategy.filterDistinctLines
         case PathList("META-INF", xs @ _*) => MergeStrategy.discard
         case x => MergeStrategy.first
       }
