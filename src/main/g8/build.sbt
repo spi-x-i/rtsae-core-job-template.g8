@@ -29,3 +29,4 @@ lazy val `$name$` = (project in file("."))
     wartremoverWarnings ++= Warts.unsafe,
     mainClass in assembly := Some("$organization$.Startup")
   )
+  .enablePlugins(AssemblyPlugin)
